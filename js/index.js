@@ -60,7 +60,7 @@ var weatherData = {
 	weather: document.querySelector ("#weather"),
 	temperature: document.querySelector("#temperature"),
 	temperatureValue: 0,
-	units: "°C"
+	units: "°F"
 };
 
 function roundTemperature(temperature){
@@ -83,7 +83,7 @@ function getLocationAndWeather(){
 
 		var weatherSimpleDescription = response.weather.simple;
 		var weatherDescription = response.weather.description;
-		var weatherTemperature = roundTemperature(response.weather.temperature);
+		var weatherTemperature = roundTemperature(response.weather.temperature * 9/5 + 32);
 
 		weatherData.temperatureValue = weatherTemperature;
 
