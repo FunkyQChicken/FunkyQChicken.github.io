@@ -32,16 +32,16 @@ function updateTime() {
 
 function updateDate() {
 	
-	let months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "nov", "dec"];
+	let months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
 	let now = new Date();
 	let d = now.getDate();
-	let m = now.getMonth()+1;
+	let m = now.getMonth();
 	let y = now.getFullYear();
 	let w = now.getMonth();
 
 	if (d.length === 1) d = "0"+d;
-	if (m.length === 1) m = "0"+m;
+	//if (m.length === 1) m = "0"+m;
 	if (y.length === 1) y = "0"+y;
 	
 	let output = d + " " + months[w] + " " + y;
