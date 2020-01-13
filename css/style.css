@@ -21,11 +21,13 @@ body {
 	Search properties
 */
 
+/*
 ::-webkit-input-placeholder {
 	color: var(--font-tri);
 	opacity: 0.5;
 	transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 input:focus::-webkit-input-placeholder {
 	opacity: 1;
 }
@@ -91,6 +93,7 @@ input:focus:-ms-input-placeholder {
 .search-block input:hover, .search-block input:focus {
 	border-bottom: 2px solid var(--font-tri);
 }
+
 .search-block input:hover + label, .search-block input:focus + label {
 	color: var(--font-tri);
 }
@@ -132,7 +135,7 @@ input:focus:-ms-input-placeholder {
 .search-block ul.search-help li:hover .command {
 	opacity: 1;
 }
-
+*/
 /*
 	Quote properties
 */
