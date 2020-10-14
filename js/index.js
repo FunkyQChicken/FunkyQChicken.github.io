@@ -104,19 +104,30 @@ function getLocationAndWeather(){
 } getLocationAndWeather();
 
 
-/* Fix for Android keycode 229 issue */
-var prevWord = "";
-function isBackspace(val) {
-	var bool = val && val.length < prevWord.length;
-	prevWord = val;
-	return bool;
+
+
+/* Add keyboard shortcuts for links */
+
+// extend as needed
+var shortcut_order = ['a', 's', 'd', 'f', 'j', 'k', 'l', 'g', 'h', 'q', 'w',  'e', 'r', 't', 'u', 'i', 'o', 
+                      'p', 'v', 'n', 'z', 'x', 'c', 'm', 'b', 'y', ';', '\'', ',', '.', '/', '[', '1', '2', 
+                      '3', '4', '5', '6', '7', '8', '9', '0'] 
+
+
+links = document.querySelectorAll(".links a")
+shortcuts = {}
+
+for (var i = 0; i < links.length; i++) {
+  node = links[i]
+  key = shortcut_order[i]
+
+  node.text = key + ": " + node.text
+  shortcuts[key] = node.href
 }
 
-help.innerHTML = "";
-for (var i = 0; i < commands.length; i++) {
-	var command = commands[i];
-	if (command.command.length > 0) {
-		help.innerHTML += "<li><span><span class='icon " + command.icon + "'></span><span class='command'>" + command.command + "</span></span></li>";
-	}
-}
+document.addEventListener('keydown', function(event) {
+  if (event.key in shortcuts) {
+    window.location.href = shortcuts[event.key]
+  }
+});
 
