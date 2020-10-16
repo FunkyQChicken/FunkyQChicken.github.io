@@ -255,14 +255,22 @@ a:active {
 }
 
 .tables {
-	display: flex;
-  flex-wrap: nowrap;
-	margin-left: 20vw;
-	margin-right: 20vw;
+	width: 60vw;
+  margin:auto;
+  white-space: nowrap;
 }
-.tables ul {
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.col {
+  flex-basis: 100%;
+  flex: 1;
+
 	color: var(--font-pri);
-  flex: 1 0 auto;
 	display: inline-block;
 	font-size: 25px;
 	font-weight: bold;
