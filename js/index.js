@@ -132,7 +132,7 @@ function addShortcuts() {
       return;
     }
     if (event.key in shortcuts) {
-      window.location.href = shortcuts[event.key]
+        window.location.href = shortcuts[event.key];
     }
   });
 } addShortcuts();
@@ -154,21 +154,23 @@ function changeLogo() {
 
   xhr.onerror = function () {
     console.log(xhr.response);
-    return 
+      return;
   };
 
   xhr.onload = function () {
     dat = JSON.parse(xhr.response);
-    dat = dat.data.children
+      dat = dat.data.children;
 
     var ind = 0;
 
-    // Only want sfw images
-    while (ind < num && 
-       (dat[ind].data.is_video || 
+    // Only want sfw images that
+    // aren't pinned
+    while (ind < num &&
+       (dat[ind].data.is_video ||
         dat[ind].data.is_gallery ||
-        dat[ind].over_18 ||
-        dat[ind].pinned ||
+        dat[ind].data.over_18 ||
+        dat[ind].data.pinned ||
+        dat[ind].data.stickied ||
         (dat[ind].data.selftext != "")
         )) {
       ind++;
