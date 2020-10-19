@@ -183,7 +183,7 @@ a:active {
   display: inline-block;
 	height: 280px;
   width: auto;
-  border: solid 0vh var(--font-pri);
+  outline: solid 0vh var(--font-pri);
 }
 
 /*
