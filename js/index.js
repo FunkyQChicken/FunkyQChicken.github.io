@@ -179,6 +179,13 @@ function changeLogo() {
 
     logo = document.querySelector("#logo");
     logo.src = img;
+
+    // only want to add border once picture
+    // has loaded
+    logo.onload = function () {
+      logo.style.margin = "2.5vh 0vh";
+      logo.style["border-width"] = "0.5vh";
+    };
   };
   xhr.send();
 } changeLogo();
