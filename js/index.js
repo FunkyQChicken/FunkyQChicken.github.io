@@ -162,9 +162,13 @@ function changeLogo() {
     dat = dat.data.children
 
     var ind = 0;
+
+    // Only want sfw images
     while (ind < num && 
        (dat[ind].data.is_video || 
         dat[ind].data.is_gallery ||
+        dat[ind].over_18 ||
+        dat[ind].pinned ||
         (dat[ind].data.selftext != "")
         )) {
       ind++;
