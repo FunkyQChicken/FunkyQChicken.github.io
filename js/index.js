@@ -126,6 +126,10 @@ for (var i = 0; i < links.length; i++) {
 }
 
 document.addEventListener('keydown', function(event) {
+  // only want to use shortcuts when not using *other* shortcuts
+  if (event.metaKey || event.altKey || event.ctrlKey) {
+    return;
+  }
   if (event.key in shortcuts) {
     window.location.href = shortcuts[event.key]
   }
