@@ -184,12 +184,14 @@ function changeLogo() {
     console.log(img);
 
     logo = document.querySelector("#logo");
+    //console.log(logo);
     logo.src = img;
 
     // only want to add border once picture
     // has loaded
     logo.onload = function () {
       logo.style["outline-width"] = "0.5vh";
+      logo.parentNode.href = img;
     };
   };
   xhr.send();
