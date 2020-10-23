@@ -1,4 +1,30 @@
 /*
+ * Cookie stuff
+ */
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+  var expires = "expires="+d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";SameSite=Strict;";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+/*
 	Date and Time
 */
 
@@ -138,13 +164,11 @@ function addShortcuts() {
 } addShortcuts();
 
 /* Change logo to be top post from subreddit of choice */
-/**
- * Reddit API wrapper for the browser (https://git.io/Mw39VQ)
- * @author Sahil Muthoo <sahil.muthoo@gmail.com> (https://www.sahilm.com)
- * @license MIT
- */
 
-function changeLogo() {
+
+var posts = null;
+
+function getPosts() {
   var subreddit = "pixelart";
   var num = 5;
   var url = "https://www.reddit.com/r/" + subreddit + "/hot.json?limit=" + num;
@@ -158,42 +182,83 @@ function changeLogo() {
   };
 
   xhr.onload = function () {
-    dat = JSON.parse(xhr.response);
-      dat = dat.data.children;
-
-    var ind = 0;
-
-    // Only want sfw images that
-    // aren't pinned
-    while (ind < num &&
-       (dat[ind].data.is_video ||
-        dat[ind].data.is_gallery ||
-        dat[ind].data.over_18 ||
-        dat[ind].data.pinned ||
-        dat[ind].data.stickied ||
-        (dat[ind].data.selftext != "")
-        )) {
-      ind++;
-    }
-
-    if (ind == num) {
-      return; // no image found
-    }
-    console.log(dat[ind]);
-    var img = dat[ind].data.url;
-    console.log(img);
-
-    logo = document.querySelector("#logo");
-    //console.log(logo);
-    logo.src = img;
-
-    // only want to add border once picture
-    // has loaded
-    logo.onload = function () {
-      logo.style["outline-width"] = "0.5vh";
-      logo.parentNode.href = img;
-    };
+      dat = JSON.parse(xhr.response);
+      posts = dat.data.children;
+      changeLogo();
   };
+
   xhr.send();
-} changeLogo();
+} getPosts();
+
+
+function changeLogo() {
+  var ind = 0;
+  var to_skip = getSkipPosts();
+
+  // Only want sfw images that
+  // aren't pinned and
+  // haven't been skipped
+  while (ind < posts.length &&
+         (posts[ind].data.is_video ||
+          posts[ind].data.is_gallery ||
+          posts[ind].data.over_18 ||
+          posts[ind].data.pinned ||
+          posts[ind].data.stickied ||
+          posts[ind].data.selftext != "" ||
+          to_skip.includes(posts[ind].data.url)
+         )) {
+    ind++;
+  }
+
+  var logo = document.querySelector("#logo");
+  var next = document.querySelector("#next");
+
+  if (ind == posts.length) {
+    logo.src = "content/images/logo.png";
+    logo.onload = function () {
+      logo.style["outline-width"] = "0vh";
+      logo.parentNode.href = "";
+      next.style["visibility"] = "hidden";
+    };
+    return; // no image found
+  }
+
+  console.log(posts[ind]);
+  var img = posts[ind].data.url;
+  // console.log(img);
+
+
+  //console.log(logo);
+  logo.src = img;
+
+  // only want to add border once picture
+  // has loaded
+  logo.onload = function () {
+    logo.style["outline-width"] = "0.5vh";
+    logo.parentNode.href = img;
+    next.style["visibility"] = "visible";
+  };
+}
+
+function getSkipPosts() {
+  return getCookie("skip").split(",,");
+}
+
+function setSkipPost(img) {
+  var skips = getSkipPosts();
+  skips.push(img);
+  setCookie("skip", skips.join(",,"), 0.4);
+}
+
+function nextImage() {
+  var logo = document.querySelector("#logo");
+  var img = logo.src;
+  setSkipPost(img);
+  changeLogo();
+} document.querySelector("#next a").onclick = nextImage;
+
+function resetSkipCookie() {
+  setCookie("skip", "", 0.4);
+}
+
 

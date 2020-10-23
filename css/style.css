@@ -61,12 +61,22 @@ a:active {
 }
 
 #logo {
-  margin: 3vh 0vh;
+  margin: 1vh 0vh;
+  margin-top: 3vh;
   display: inline-block;
 	height: 280px;
   width: auto;
   outline: solid 0vh var(--font-pri);
 }
+
+#next {
+  margin: 1vh 0vh;
+  display: block;
+	color: var(--font-sec);
+  margin: auto;
+  visibility: hidden;
+}
+
 
 /*
 	Classes
