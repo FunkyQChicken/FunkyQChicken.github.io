@@ -5,14 +5,14 @@
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-  var expires = "expires="+d.toUTCString();
+  var expires = "expires=" + d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";SameSite=Strict;";
 }
 
 function getCookie(cname) {
   var name = cname + "=";
   var ca = document.cookie.split(';');
-  for(var i = 0; i < ca.length; i++) {
+  for (var i = 0; i < ca.length; i++) {
     var c = ca[i];
     while (c.charAt(0) == ' ') {
       c = c.substring(1);
@@ -25,7 +25,7 @@ function getCookie(cname) {
 }
 
 /*
-	Date and Time
+  Date and Time
 */
 
 updateTime();
@@ -33,69 +33,69 @@ updateDate();
 setInterval(updateTime, 1000);
 
 function updateTime() {
-	let now = new Date();
-	let m = now.getMinutes().toString();
-	let h = now.getHours().toString();
-	
-	var dd = "am";
-	var hh = h;
+  let now = new Date();
+  let m = now.getMinutes().toString();
+  let h = now.getHours().toString();
 
-	if (m.length === 1) m = "0"+m;
-	if (h.length === 1) h = "0"+h;
-	
-	if (h >= 12) {
-		h = hh - 12;
-		dd = "pm";
-	}
-	if (h == 0) {
-		h = 12;
-	}
+  var dd = "am";
+  var hh = h;
 
-	let output = h + ":" + m + " " + dd;
+  if (m.length === 1) m = "0" + m;
+  if (h.length === 1) h = "0" + h;
 
-	document.getElementById("current-time").innerHTML = output;
+  if (h >= 12) {
+    h = hh - 12;
+    dd = "pm";
+  }
+  if (h == 0) {
+    h = 12;
+  }
+
+  let output = h + ":" + m + " " + dd;
+
+  document.getElementById("current-time").innerHTML = output;
 }
 
 function updateDate() {
-	
-	let months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
-	let now = new Date();
-	let d = now.getDate();
-	let m = now.getMonth();
-	let y = now.getFullYear();
-	let w = now.getMonth();
+  let months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
-	if (d.length === 1) d = "0"+d;
-	//if (m.length === 1) m = "0"+m;
-	if (y.length === 1) y = "0"+y;
-	
-	let output = d + " " + months[w] + " " + y;
+  let now = new Date();
+  let d = now.getDate();
+  let m = now.getMonth();
+  let y = now.getFullYear();
+  let w = now.getMonth();
 
-	document.getElementById("date").innerHTML = output;
+  if (d.length === 1) d = "0" + d;
+  //if (m.length === 1) m = "0"+m;
+  if (y.length === 1) y = "0" + y;
+
+  let output = d + " " + months[w] + " " + y;
+
+  document.getElementById("date").innerHTML = output;
 }
 
 /*
-	Weather
+  Weather
 */
 
 setInterval(getLocationAndWeather, 180000)
 
 var weatherData = {
-	city: document.querySelector ("#city"),
-	weather: document.querySelector ("#weather"),
-	temperature: document.querySelector("#temperature"),
-	temperatureValue: 0,
-	units: "°F"
+  city: document.querySelector("#city"),
+  weather: document.querySelector("#weather"),
+  temperature: document.querySelector("#temperature"),
+  temperatureValue: 0,
+  units: "°F"
 };
 
-function roundTemperature(temperature){
-	temperature = temperature.toFixed(1);
-	return temperature;
+function roundTemperature(temperature) {
+  temperature = temperature.toFixed(1);
+  return temperature;
 }
 
-function getLocationAndWeather(){
-	if (window.XMLHttpRequest){
+function getLocationAndWeather() {
+  if (window.XMLHttpRequest) {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener("load", function() {
       var response = JSON.parse(xhr.responseText);
@@ -109,25 +109,26 @@ function getLocationAndWeather(){
 
       var weatherSimpleDescription = response.weather.simple;
       var weatherDescription = response.weather.description;
-      var weatherTemperature = roundTemperature(response.weather.temperature * 9/5 + 32);
+      var weatherTemperature = roundTemperature(response.weather.temperature * 9 / 5 + 32);
 
       weatherData.temperatureValue = weatherTemperature;
 
       weatherData.city.innerHTML = cityName;
-      weatherData.weather.innerHTML =  weatherDescription;
+      weatherData.weather.innerHTML = weatherDescription;
       weatherData.temperature.innerHTML = weatherTemperature + weatherData.units;
     }, false);
 
-    xhr.addEventListener("error", function(err){
+    xhr.addEventListener("error", function(err) {
       alert("Could not complete the request");
     }, false);
 
     xhr.open("GET", "https://fourtonfish.com/tutorials/weather-web-app/getlocationandweather.php?owapikey=e2db5b0453a25a492e87ad8b03046a7c&units=metric", true);
     xhr.send();
-	} else {
-		alert("Unable to fetch the location and weather data.");
-	}
-} getLocationAndWeather();
+  } else {
+    alert("Unable to fetch the location and weather data.");
+  }
+}
+getLocationAndWeather();
 
 
 
@@ -136,9 +137,10 @@ function getLocationAndWeather(){
 
 function addShortcuts() {
   // extend as needed
-  var shortcut_order = ['a', 's', 'd', 'f', 'j', 'k', 'l', 'g', 'h', 'q', 'w',  'e', 'r', 't', 'u', 'i', 'o', 
-    'p', 'v', 'n', 'z', 'x', 'c', 'm', 'b', 'y', ';', '\'', ',', '.', '/', '[', '1', '2', 
-    '3', '4', '5', '6', '7', '8', '9', '0'] 
+  var shortcut_order = ['a', 's', 'd', 'f', 'j', 'k', 'l', 'g', 'h', 'q', 'w', 'e', 'r', 't', 'u', 'i', 'o',
+                        'p', 'v', 'n', 'z', 'x', 'c', 'm', 'b', 'y', ';', '\'', ',', '.', '/', '[', '1', '2',
+                        '3', '4', '5', '6', '7', '8', '9', '0'
+                       ]
 
 
   var links = document.querySelectorAll(".links a")
@@ -158,10 +160,11 @@ function addShortcuts() {
       return;
     }
     if (event.key in shortcuts) {
-        window.location.href = shortcuts[event.key];
+      window.location.href = shortcuts[event.key];
     }
   });
-} addShortcuts();
+}
+addShortcuts();
 
 /* Change logo to be top post from subreddit of choice */
 
@@ -176,19 +179,20 @@ function getPosts() {
 
   xhr.open("GET", url, true);
 
-  xhr.onerror = function () {
+  xhr.onerror = function() {
     console.log(xhr.response);
-      return;
+    return;
   };
 
-  xhr.onload = function () {
-      dat = JSON.parse(xhr.response);
-      posts = dat.data.children;
-      changeLogo();
+  xhr.onload = function() {
+    dat = JSON.parse(xhr.response);
+    posts = dat.data.children;
+    changeLogo();
   };
 
   xhr.send();
-} getPosts();
+}
+getPosts();
 
 
 function changeLogo() {
@@ -215,7 +219,7 @@ function changeLogo() {
 
   if (ind == posts.length) {
     logo.src = "content/images/logo.png";
-    logo.onload = function () {
+    logo.onload = function() {
       logo.style["outline-width"] = "0vh";
       logo.parentNode.href = "";
       next.style["visibility"] = "hidden";
@@ -233,7 +237,7 @@ function changeLogo() {
 
   // only want to add border once picture
   // has loaded
-  logo.onload = function () {
+  logo.onload = function() {
     logo.style["outline-width"] = "0.5vh";
     logo.parentNode.href = img;
     next.style["visibility"] = "visible";
@@ -255,10 +259,9 @@ function nextImage() {
   var img = logo.src;
   setSkipPost(img);
   changeLogo();
-} document.querySelector("#next a").onclick = nextImage;
+}
+document.querySelector("#next a").onclick = nextImage;
 
 function resetSkipCookie() {
   setCookie("skip", "", 0.4);
 }
-
-

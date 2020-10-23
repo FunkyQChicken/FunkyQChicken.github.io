@@ -1,5 +1,5 @@
 /*
-	General properties
+  General properties
 */
 :root {
   --back-col: #1F292D;
@@ -10,61 +10,61 @@
 }
 
 body {
-	background-color: var(--back-col);
+  background-color: var(--back-col);
 }
 
 * {
-	font-family: "Fixed", monospace;
+  font-family: "Fixed", monospace;
 }
 
 */
 /*
-	Quote properties
+  Quote properties
 */
 
 blockquote {
-	font-size: 16px;
-	line-height: 150%;
+  font-size: 16px;
+  line-height: 150%;
 }
 
 cite {
-	font-size: 15px;
+  font-size: 15px;
 }
 
 /*
-	Link properties
+  Link properties
 */
 
 a:link, a:visited {
-	color: var(--font-sec);
-	text-decoration: none;
+  color: var(--font-sec);
+  text-decoration: none;
 }
 
 a:hover {
-	color: var(--font-hov);
-	text-decoration: none;
+  color: var(--font-hov);
+  text-decoration: none;
 }
 
 a:active {
-	color: var(--font-pri);
-	text-decoration: none;
+  color: var(--font-pri);
+  text-decoration: none;
 }
 
 /*
-	Logo properties
+  Logo properties
 */
 
 #wrapper {
-	align-items: flex;
-	text-align: center;
-	width: 100%;
+  align-items: flex;
+  text-align: center;
+  width: 100%;
 }
 
 #logo {
   margin: 1vh 0vh;
   margin-top: 3vh;
   display: inline-block;
-	height: 280px;
+  height: 280px;
   width: auto;
   outline: solid 0vh var(--font-pri);
 }
@@ -72,83 +72,83 @@ a:active {
 #next {
   margin: 1vh 0vh;
   display: block;
-	color: var(--font-sec);
+  color: var(--font-sec);
   margin: auto;
   visibility: hidden;
 }
 
 
 /*
-	Classes
+  Classes
 */
 
 .wrapper .header {
-	position: absolute;
-	right: 0px;
-	top: 0px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
 }
 
 .header {
-	color: var(--font-pri);
-	font-size: 16px;
-	font-weight: bold;
-	letter-spacing: 2px;
-	list-style-type: none;
-	// border: 1px solid black;
-	padding: 5px;
-	text-align: center;
-	width: 12%;
+  color: var(--font-pri);
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  list-style-type: none;
+  // border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+  width: 12%;
 }
 .header .currentTime {
-	color: var(--font-sec);
-	font-size: 14px;
-	font-weight: 100;
-	letter-spacing: 0px;
-	padding-left: 0px;
-	text-align: left;
+  color: var(--font-sec);
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: 0px;
+  padding-left: 0px;
+  text-align: left;
 }
 .header .currentDate {
-	color: var(--font-sec);
-	font-size: 14px;
-	font-weight: 100;
-	letter-spacing: 0px;
-	padding-left: 0px;
-	text-align: left;
+  color: var(--font-sec);
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: 0px;
+  padding-left: 0px;
+  text-align: left;
 }
 .header .city {
-	color: var(--font-sec);
-	font-size: 14px;
-	font-weight: 100;
-	letter-spacing: 0px;
-	padding-left: 0px;
-	text-align: left;
-	text-transform: lowercase;
+  color: var(--font-sec);
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: 0px;
+  padding-left: 0px;
+  text-align: left;
+  text-transform: lowercase;
 }
 .header .temp {
-	color: var(--font-sec);
-	font-size: 14px;
-	font-weight: 100;
-	letter-spacing: 0px;
-	padding-left: 0px;
-	text-align: left;
+  color: var(--font-sec);
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: 0px;
+  padding-left: 0px;
+  text-align: left;
 }
 .header .forecast {
-	color: var(--font-sec);
-	font-size: 14px;
-	font-weight: 100;
-	letter-spacing: 0px;
-	padding-left: 0px;
-	text-align: left;
-	text-transform: lowercase;
+  color: var(--font-sec);
+  font-size: 14px;
+  font-weight: 100;
+  letter-spacing: 0px;
+  padding-left: 0px;
+  text-align: left;
+  text-transform: lowercase;
 }
 .header ul {
-	list-style-type: none;
-	margin: 0px;
-	padding: 10px;
+  list-style-type: none;
+  margin: 0px;
+  padding: 10px;
 }
 
 .tables {
-	width: 60vw;
+  width: 60vw;
   margin:auto;
   white-space: nowrap;
 }
@@ -163,24 +163,24 @@ a:active {
   flex-basis: 100%;
   flex: 1;
 
-	color: var(--font-pri);
-	display: inline-block;
-	font-size: 25px;
-	font-weight: bold;
-	letter-spacing: 2px;
-	list-style-type: none;
-	margin: 10px;
-	padding: 0;
-	text-align: center;
+  color: var(--font-pri);
+  display: inline-block;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  list-style-type: none;
+  margin: 10px;
+  padding: 0;
+  text-align: center;
 }
 
 .links {
-	text-align: left;
-	line-height: 28px;
-	letter-spacing: 0px;
-	font-size: 16px;
-	font-weight: 100;
-	padding-left: 35px;
+  text-align: left;
+  line-height: 28px;
+  letter-spacing: 0px;
+  font-size: 16px;
+  font-weight: 100;
+  padding-left: 35px;
 }
 
 .i a {
@@ -188,18 +188,18 @@ a:active {
 }
 
 .footer {
-	align-items: center;
-	bottom: 5px;
-	display: flex;
-	margin-left: 480px;
-	margin-right: 480px;
-	position: absolute;
+  align-items: center;
+  bottom: 5px;
+  display: flex;
+  margin-left: 480px;
+  margin-right: 480px;
+  position: absolute;
 }
 .footer .quotes {
-	align-items: center;
-	display: flex;
-	text-align: justify;
+  align-items: center;
+  display: flex;
+  text-align: justify;
 }
 .footer .cites {
-	line-height: 140%;
+  line-height: 140%;
 }
