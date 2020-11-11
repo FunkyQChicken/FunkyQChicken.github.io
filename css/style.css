@@ -67,6 +67,13 @@ a:active {
   height: 280px;
   width: auto;
   outline: solid 0vh var(--font-pri);
+
+  /* No blurring for Pixel Art */
+  image-rendering: -moz-crisp-edges;         /* Firefox */
+  image-rendering:   -o-crisp-edges;         /* Opera */
+  image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
 }
 
 #next {
