@@ -119,7 +119,9 @@ function getLocationAndWeather() {
     }, false);
 
     xhr.addEventListener("error", function(err) {
-      alert("Could not complete the request");
+      // Don't really need an error message for this :/
+      //alert("Could not complete the request");
+      console.log("Could not complete the request to retrieve weather.");
     }, false);
 
     xhr.open("GET", "https://fourtonfish.com/tutorials/weather-web-app/getlocationandweather.php?owapikey=e2db5b0453a25a492e87ad8b03046a7c&units=metric", true);
