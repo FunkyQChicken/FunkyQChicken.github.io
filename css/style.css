@@ -5,7 +5,7 @@
   --back-col: #373672;
   --font-pri: #fdfafd;
   --font-sec: #b0b0e4;
-  --font-hov: #17AC8E;
+  --font-hov: #f4d1f5;
   --font-tri: #737573;
 }
 
@@ -64,7 +64,7 @@ a:active {
   margin: 1vh 0vh;
   margin-top: 3vh;
   display: inline-block;
-  height: 280px;
+  height: 350px;
   width: auto;
   outline: solid 0vh var(--font-pri);
 
