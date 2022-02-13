@@ -127,8 +127,11 @@ getLocationAndWeather();
 
 
 var posts = null;
-
+var def_logo_chance = 0.20
 function getPosts() {
+  if (Math.random() < def_logo_chance)
+    return;
+
   var subreddit = "pixelart";
   var num = 5;
   var url = "https://www.reddit.com/r/" + subreddit + "/hot.json?limit=" + num;
