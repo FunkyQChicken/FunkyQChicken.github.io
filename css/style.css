@@ -2,9 +2,9 @@
   General properties
 */
 :root {
-  --back-col: #1F292D;
-  --font-pri: #C6C6C6;
-  --font-sec: #E3B97D;
+  --back-col: #373672;
+  --font-pri: #fdfafd;
+  --font-sec: #b0b0e4;
   --font-hov: #17AC8E;
   --font-tri: #737573;
 }
