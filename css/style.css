@@ -17,19 +17,6 @@ body {
   font-family: "Fixed", monospace;
 }
 
-*/
-/*
-  Quote properties
-*/
-
-blockquote {
-  font-size: 16px;
-  line-height: 150%;
-}
-
-cite {
-  font-size: 15px;
-}
 
 /*
   Link properties
@@ -192,22 +179,4 @@ a:active {
 
 .i a {
   color:inherit
-}
-
-.footer {
-  align-items: center;
-  bottom: 5px;
-  display: flex;
-  margin-left: 480px;
-  margin-right: 480px;
-  position: absolute;
-}
-
-.footer .quotes {
-  align-items: center;
-  display: flex;
-  text-align: justify;
-}
-.footer .cites {
-  line-height: 140%;
 }
