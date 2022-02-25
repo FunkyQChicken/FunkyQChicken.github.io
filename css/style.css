@@ -155,7 +155,7 @@ a:active {
 }
 
 .tables {
-  width: 60vw;
+  width: 30vw;
   margin:auto;
   white-space: nowrap;
 }
@@ -202,6 +202,7 @@ a:active {
   margin-right: 480px;
   position: absolute;
 }
+
 .footer .quotes {
   align-items: center;
   display: flex;
