@@ -90,7 +90,6 @@ function getLocationAndWeather() {
     xhr.addEventListener("load", function() {
       var response = JSON.parse(xhr.responseText);
 
-      console.log(response);
       var position = {
         latitude: response.latitude,
         longitude: response.longitude
@@ -187,12 +186,7 @@ function changeLogo() {
     return; // no image found
   }
 
-  console.log(posts[ind]);
   var img = posts[ind].data.url;
-  // console.log(img);
-
-
-  //console.log(logo);
   logo.src = img;
 
   // only want to add border once picture
@@ -210,6 +204,10 @@ function getSkipPosts() {
 
 function setSkipPost(img) {
   var skips = getSkipPosts();
+  // we don't want posts to build up, so remove old ones.
+  if (skips.length > 12) {
+    skips.slice(0, 5);
+  }
   skips.push(img);
   setCookie("skip", skips.join(",,"), 0.4);
 }
