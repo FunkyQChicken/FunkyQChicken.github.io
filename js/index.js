@@ -206,7 +206,7 @@ function setSkipPost(img) {
   var skips = getSkipPosts();
   // we don't want posts to build up, so remove old ones.
   if (skips.length > 12) {
-    skips.slice(0, 5);
+    skips.splice(0, 5);
   }
   skips.push(img);
   setCookie("skip", skips.join(",,"), 0.4);
