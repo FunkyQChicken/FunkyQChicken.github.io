@@ -85,6 +85,18 @@ function roundTemperature(temperature) {
 }
 
 function getLocationAndWeather() {
+  // skip getting weather if cached version and offline.
+  var weather_section = document.getElementById("weather-section"); 
+  if (!navigator.onLine) {
+    weather_section.children[1].hidden = true
+    weather_section.children[0].textContent = "offline."
+    return;
+  } else {
+    weather_section.children[1].hidden = false
+    weather_section.children[0].textContent = "weather.\n"
+  }
+
+
   if (window.XMLHttpRequest) {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener("load", function() {
@@ -223,3 +235,5 @@ document.querySelector("#next a").onclick = nextImage;
 function resetSkipCookie() {
   setCookie("skip", "", 0.4);
 }
+
+
