@@ -20,7 +20,7 @@ function getCookie(cname) {
 
 updateTime();
 updateDate();
-setInterval(updateTime, 1000);
+setInterval(updateTime, 10000);
 
 function updateTime() {
   let now = new Date();
