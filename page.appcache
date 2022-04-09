@@ -1,7 +1,8 @@
 CACHE MANIFEST
 content/*
 css/*
-index.html
 js/*
-other.html
 pdf/*
+fonts/*
+index.html
+other.html

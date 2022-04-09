@@ -9,14 +9,18 @@
   --font-tri: #737573;
 }
 
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/SourceCodePro.ttf) format('truetype');
+}
+
 body {
   background-color: var(--back-col);
+  font-family: 'Source Code Pro', monospace;
 }
-
-* {
-  font-family: "monospace", "Fixed";
-}
-
 
 /*
   Link properties
