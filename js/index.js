@@ -2,7 +2,7 @@
  * Cookie stuff
  */
 
-function setCookie(cname, cvalue, exdays) {
+function setCookie(cname, cvalue) {
   localStorage.setItem(cname, cvalue);
 }
 
@@ -52,86 +52,16 @@ function updateDate() {
 
   let now = new Date();
   let d = now.getDate();
-  let m = now.getMonth();
   let y = now.getFullYear();
   let w = now.getMonth();
 
   if (d.length === 1) d = "0" + d;
-  //if (m.length === 1) m = "0"+m;
   if (y.length === 1) y = "0" + y;
 
   let output = d + " " + months[w] + " " + y;
 
   document.getElementById("date").innerHTML = output;
 }
-
-/*
-  Weather
-*/
-
-setInterval(getLocationAndWeather, 180000)
-
-var weatherData = {
-  city: document.querySelector("#city"),
-  weather: document.querySelector("#weather"),
-  temperature: document.querySelector("#temperature"),
-  temperatureValue: 0,
-  units: "°F"
-};
-
-function roundTemperature(temperature) {
-  temperature = temperature.toFixed(1);
-  return temperature;
-}
-
-function getLocationAndWeather() {
-  // skip getting weather if cached version and offline.
-  var weather_section = document.getElementById("weather-section"); 
-  if (!navigator.onLine) {
-    weather_section.children[1].hidden = true
-    weather_section.children[0].textContent = "offline."
-    return;
-  } else {
-    weather_section.children[1].hidden = false
-    weather_section.children[0].textContent = "weather.\n"
-  }
-
-
-  if (window.XMLHttpRequest) {
-    var xhr = new XMLHttpRequest();
-    xhr.addEventListener("load", function() {
-      var response = JSON.parse(xhr.responseText);
-
-      var position = {
-        latitude: response.latitude,
-        longitude: response.longitude
-      };
-      var cityName = response.city;
-
-      var weatherSimpleDescription = response.weather.simple;
-      var weatherDescription = response.weather.description;
-      var weatherTemperature = roundTemperature(response.weather.temperature * 9 / 5 + 32);
-
-      weatherData.temperatureValue = weatherTemperature;
-
-      weatherData.city.innerHTML = cityName;
-      weatherData.weather.innerHTML = weatherDescription;
-      weatherData.temperature.innerHTML = weatherTemperature + weatherData.units;
-    }, false);
-
-    xhr.addEventListener("error", function(err) {
-      // Don't really need an error message for this :/
-      //alert("Could not complete the request");
-      console.log("Could not complete the request to retrieve weather.");
-    }, false);
-
-    xhr.open("GET", "https://fourtonfish.com/tutorials/weather-web-app/getlocationandweather.php?owapikey=e2db5b0453a25a492e87ad8b03046a7c&units=metric", true);
-    xhr.send();
-  } else {
-    alert("Unable to fetch the location and weather data.");
-  }
-}
-getLocationAndWeather();
 
 
 /* Change logo to be top post from subreddit of choice */
