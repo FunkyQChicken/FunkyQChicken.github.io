@@ -2,11 +2,11 @@
   General properties
 */
 :root {
-  --back-col: #373672;
-  --font-pri: #fdfafd;
-  --font-sec: #b0b0e4;
-  --font-hov: #f4d1f5;
-  --font-tri: #737573;
+  --back-col: #282a36;
+  --font-pri: #f8f8f2;
+  --font-sec: #6272a4;
+  --font-hov: #f8f8f2;
+  --font-tri: #44475a;
 }
 
 @font-face {
