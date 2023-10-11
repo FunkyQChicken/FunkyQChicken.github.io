@@ -8,6 +8,11 @@ class Particle {
     this.dy = 0;
     this.radius = 1
 
+    this.tdx = 0;
+    this.tdy = 0;
+    this.tddx = 0;
+    this.tddy = 0;
+
     this.opacity = 1.0;
   }
 }
@@ -67,6 +72,8 @@ function particle_drawer() {
       draw_particle_func(particles[i], ctx, false);
     }
   }
+  mouse.dx /= 2;
+  mouse.dy /= 2;
 }
 window.requestAnimationFrame(particle_drawer);
 
@@ -115,6 +122,50 @@ function constant_speed(p, dt) {
   return p.y > canvas.height || p.x < 0 || p.x > canvas.width;
 }
 
+mouse = {
+  x: 100,
+  y: 100,
+  dx: 10,
+  dy: 10,
+}
+
+function clamp(v, min, max) {
+  return v < min ? min : (v > max ? max : v)
+}
+
+const max_md = 14;
+document.addEventListener("mousemove", function(event) {
+  mouse.x = event.clientX;
+  mouse.y = event.clientY;
+  mouse.dx = clamp(event.movementX / 2, -max_md, max_md);
+  mouse.dy = clamp(event.movementY / 2, -max_md, max_md);
+});
+
+function constant_speed_and_mouse(p, dt) {
+  var m = dt / 15;
+  p.x += (p.dx + p.tdx) * m;
+  p.y += (p.dy + p.tdy) * m;
+
+  p.tdx += p.tddx;
+  p.tdy += p.tddy;
+
+  p.tdx *= 0.5
+  p.tdy *= 0.5
+
+  dist = ((p.x - mouse.x) ** 2) + ((p.y - mouse.y) ** 2);
+  const min_distance = 300.0;
+  if (dist < min_distance) {dist = min_distance}
+  infl = min_distance / dist;
+
+  p.tddx += mouse.dx * infl ;
+  p.tddy += mouse.dy * infl ;
+
+  p.tddx *= 0.5;
+  p.tddy *= 0.5;
+
+  return p.y > canvas.height || p.x < 0 || p.x > canvas.width;
+}
+
 spawn_particle_func = top_and_left_spawn
-tick_particle_func = constant_speed;
+tick_particle_func = constant_speed_and_mouse;
 draw_particle_func = draw_circle;
